@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package default;
+
+service DefaultService {
+  rpc findOne(DefaultById) returns (Default) {}
+  rpc findAll(Empty) returns (DefaultArray) {}
+  rpc create(DefaultCreate) returns (Default) {}
+}
+
+message Empty {
+
+}
+
+message DefaultById {
+  int32 id = 1;
+}
+
+message Default {
+  int32 id = 1;
+  string name = 2;
+}
+
+message DefaultCreate {
+  string name = 1;
+}
+
+message DefaultArray {
+  repeated Default allDefault = 1;
+}
